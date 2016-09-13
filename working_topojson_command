@@ -1,0 +1,1 @@
+topojson -o build/counties.json build/cb_2015_us_county_20m/cb_2015_us_county_20m.shp --simplify=.5 --projection='width = 960, height = 600, d3.geo.albersUsa().scale(1280).translate([width / 2, height / 2])'

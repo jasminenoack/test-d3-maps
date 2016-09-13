@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+path {
+  fill: none;
+  stroke: #000;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+</style>
+<body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.3/d3.js" charset="utf-8"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.20/topojson.js"></script>
+<script>
+
+var width = 960,
+    height = 600;
+
+var path = d3.geoPath()
+    .projection(null);
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+d3.json("https://gist.githubusercontent.com/jasminenoack/caab4d8d48c6432789beb2864489f80c/raw/bed04299832ec82e8ca3951383975b6ce67c7bfb/topojsondata.json", function(error, us) {
+  if (error) return console.error(error);
+
+  svg.append("path")
+      .datum(topojson.mesh(us))
+      .attr("d", path);
+});
+
+</script>
